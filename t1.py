@@ -9,6 +9,6 @@ while True:
 	input_s = serialFromArduino.readline()
 	print(input_s)
 	url = 'localhost'
-	params = {'code' = 'code'}
-	r = requests.get*(url = url , params = params)
-	
+	r = requests.get(url,params = {'tmp' : input_s})
+	print(r.status)
+	print(r.txt)
