@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TemperFan</title>
+</head>
+<body>
+<tr>
+    <td>{{time}}</td>
+    <td>{{row.tmp}}</td>
+    <td>{{row.strength}}</td>
+    <td>{{row.stat}}</td>
+
+</tr>
+</body>
+</html>

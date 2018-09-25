@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'css/present.css'%}">
+    <meta charset="UTF-8">
+    <title>TemperFan</title>
+    <h1>TemperFan</h1>
+</head>
+<body >
+<div><center><img class = 'img' src="{% static 'css/fan.gif'%}"></center></div>
+<div id="main">
+    <l1><center>Your fan <red>{{row.stat}} {{row.strength}}</red> at {{row.time}}.<br></center></l1>
+    <l2><center>The current temperature is <red>{{row.tmp}}°C</red>.<br></center></l2>
+</div>
+
+</body>
+</html>
