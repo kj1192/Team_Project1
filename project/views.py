@@ -1,15 +1,31 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, QueryDict
 from .models import Mytable
 from django.views.decorators.csrf import csrf_exempt
 import json
 from datetime import datetime
+from django.views.decorators.csrf import csrf_exempt
+from urllib.parse import urlparse
 
 def index(request):
     if request.method == "GET":
         try:
-            t = str(request.get_full_path())
-            tmp = t[1:]
+            row = Mytable.objects.order_by('id').last()
+            context = {'row': row}
+            tmp = str(row.tmp)
+            strength = row.strength
+            stat = str(row.stat)
+
+        except:
+            return HttpResponse("Get Error")
+        return render(request, 'project/present.html', context)
+
+@csrf_exempt
+def present(request):
+    if request.method == 'PUT':
+        try:
+            data = (request.body.decode('utf-8'))
+            tmp = data[4:]
             stat = "activated"
             time = str(datetime.today().strftime("%Y/%m/%d %H:%M:%S"))
             if int(tmp) > 28 and int(tmp) < 31:
@@ -24,16 +40,6 @@ def index(request):
             in_data = Mytable(tmp = tmp, stat = stat, strength = strength)
             in_data.save()
         except:
-            in_data = None
-        return HttpResponse(in_data)
+            print("Put Error")
+        return HttpResponse(data)
 
-
-def present(request):
-    row = Mytable.objects.order_by('id').last()
-    context = {'row': row}
-    time = str(datetime.today().strftime("%Y/%m/%d %H:%M:%S"))
-    tmp = str(row.tmp)
-    strength = row.strength
-    stat = str(row.stat)
-    return render(request, 'project/present.html', context)
-#    return HttpResponse(time +" "+tmp+" "+strength+" "+stat)
