@@ -17,17 +17,17 @@ void loop()
  
   float  tempC = (voltage -0.5) * 100;
   Serial.println(tempC);
-  if(tempC >= 290 && tempC <300){
-   analogWrite(motorPin,200); 
+  if(tempC > 28 && tempC <31){
+   analogWrite(motorPin,150); 
   }
-  else if(tempC >=300){
-    analogWrite(motorPin,249);
+  else if(tempC >= 31){
+    analogWrite(motorPin,200);
   }
   else{
     analogWrite(motorPin,0);
   }
 
-  delay(2000);
+  delay(5000);
 }
 
 
