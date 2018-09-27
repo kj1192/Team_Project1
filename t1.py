@@ -15,7 +15,7 @@ try:
         RawData = {'tmp' : input_s}
         Rdata = urllib.parse.urlencode(RawData).encode("utf-8")
         print(Rdata)
-        req = urllib.request.Request(url = "http://192.168.0.184/put", data = Rdata, method = 'PUT')     
+        req = urllib.request.Request(url = "http://172.20.10.5/put", data = Rdata, method = 'PUT')     
      ##   durl = 'http://192.168.0.184/put' 
      ##   req = requests.put(url = durl, data = RawData)
      ##  print(req.status)
